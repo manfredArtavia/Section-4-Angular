@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SpotifyService } from './services/spotify.service';
+import { HttpClientModule } from '@angular/common/http';
 
 // Routes
 import { app_routing } from './app.routes';
@@ -20,9 +22,12 @@ import { app_routing } from './app.routes';
   ],
   imports: [
     BrowserModule,
-    app_routing
+    app_routing,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    SpotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
