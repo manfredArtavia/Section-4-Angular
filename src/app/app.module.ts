@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // components
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Routes
 import { app_routing } from './app.routes';
+import { NophotoPipe } from './pipes/nophoto.pipe';
+import { ArtistComponent } from './components/artist/artist.component';
 
 
 @NgModule({
@@ -18,12 +21,15 @@ import { app_routing } from './app.routes';
     AppComponent,
     HomeComponent,
     SearchComponent,
-    NavbarComponent
+    NavbarComponent,
+    NophotoPipe,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
     app_routing,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     SpotifyService

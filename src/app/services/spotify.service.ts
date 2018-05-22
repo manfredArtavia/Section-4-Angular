@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SpotifyService {
   artists: any[] = [];
-  constructor(public http: HttpClient) {
-    console.log('Hi');
-  }
+  constructor(public http: HttpClient) {}
 
-  getArtists() {
-      const url = 'https://api.spotify.com/v1/search?query=metallica&type=artist&limit=20';
-      const token = 'BQCs-n1Sk5FOq0MVeO2uWsI4KG9QYv0IFCpBk-WyqK81ybuRbzCSJ7W98T-Gw0kjT5OSkQKeneUT4mWrf_I';
+  getArtists(term: string) {
+      const url = `https://api.spotify.com/v1/search?query=${term}&type=artist&limit=20`;
+      const token = 'BQB2mEEFdPy6LX5aNB3jWIjsRI-CqQ0Z_0Qqkv-KlrUY1RxiTG5gNtNDcc7GSiqZp1vI35c4BtDItGY8rhY';
       const headers = new HttpHeaders({
         authorization: `Bearer ${token}`
       });
-      return this.http.get(url, { headers });
+      return this.http.get(url, { headers }).map((response: any) => {
+        this.artists = response.artists.items;
+        return this.artists;
+      });
   }
 
 }
