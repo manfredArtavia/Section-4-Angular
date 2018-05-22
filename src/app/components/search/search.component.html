@@ -10,7 +10,9 @@
       <h1>{{term}}</h1>
       <hr>
       <div class="row">
-        <div class="col-lg-3 col-md-3 text-center puntero" *ngFor="let artist of _spotify.artists">
+        <div class="col-lg-3 col-md-3 text-center puntero"
+        *ngFor="let artist of _spotify.artists"
+        [routerLink] = "['/artist', artist.id]">
           <img [src]="artist.images | nophoto" class="img-thumbnail">
           <p>{{artist.name}}</p>
         </div>
